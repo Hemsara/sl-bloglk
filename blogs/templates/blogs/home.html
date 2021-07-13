@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+header {
+  color: white;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  background-image: url("https://i.pinimg.com/originals/1f/3d/85/1f3d85148ab183f085a42b5649069499.jpg");
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 45px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+nav ul li {
+  list-style: none;
+  margin: 0px 35px;
+}
+
+.hero {
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+}
+
+.hero h1 {
+  font-weight: 400;
+  font-size: 3.5em;
+  margin: 18px 0px;
+}
+
+.hero button {
+  cursor: pointer;
+  margin-top: 15px;
+  background-color: transparent;
+  color: white;
+  border: 1px solid whitesmoke;
+  padding: 10px 25px;
+  font-size: 1.3em;
+  transition-duration: 0.3s;
+}
+
+.hero button:hover {
+  background-color: white;
+  color: black;
+}
+
+.blogs {
+  height: 100vh;
+  padding: 30px;
+}
+
+.blogs h1 {
+  text-align: center;
+  font-size: 2.5em;
+  font-weight: 400;
+  margin-bottom: 25px;
+}
+
+.blog-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.blog-container img {
+  width: 100%;
+  object-fit: cover;
+  height: 250px;
+}
+
+.blog-card {
+  margin-top: 15px;
+  border: 1px solid #f0f0f0;
+  width: 400px;
+}
+
+.container {
+  padding: 15px 25px;
+}
+
+.container h2, .container p {
+  margin-bottom: 15px;
+  line-height: 1.5em;
+}
+
+.container h2 {
+  font-weight: 400;
+}
+
+.read {
+  color: #05056b;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 750px) {
+  header li {
+    display: none;
+  }
+  header nav {
+    justify-content: center;
+  }
+  header .hero {
+    text-align: center;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h1>BlogLK</h1>
+        <ul>
+          <li>Home</li>
+          <li>Blogs</li>
+          <li>About</li>
+        </ul>
+      </nav>
+      <section class="hero">
+        <h1>World Is On Your Fingertip</h1>
+        <button>Start Writing</button>
+      </section>
+    </header>
+    <section class="blogs">
+      <h1>Latest Blogs</h1>
+      <div class="blog-container">
+          {% for Blog in blogs  %}
+          <div class="blog-card">
+            <img
+              src={{Blog.image}}
+              alt=""
+            />
+            <div class="container">
+              <h2>{{Blog.title}}</h2>
+              <p>
+                {{Blog.body}}
+              </p>
+              <p class='read'>Read More</p>
+            </div>
+          </div>
+          {% endfor %}
+    
+      </div>
+    </section>
+  </body>
+</html>
